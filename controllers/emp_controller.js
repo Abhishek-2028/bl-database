@@ -152,14 +152,7 @@ const conf_user_email = async (emp) => {
     }).then(() => { console.log('mail send') })
 }
 
-const update_sal = async (req, res) => {
-    let data1 = await User.findOne()
-    console.log("data1", data1.Salary);
-    let data = new emp_salary({ Salary: req.body.Salary });
-    console.log(req.body)
-    let demo1 = await data.save();
-    res.send(demo1)
-}
+
 
 const task_post = async(req,res)=>{
     let task=new Task(req.body)
@@ -184,7 +177,7 @@ module.exports = {
     emp_update,
     conf_user_email,
 
-    update_sal,
+  
     task_post,
     task_get,
     task_del
