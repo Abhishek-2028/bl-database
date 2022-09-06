@@ -52,18 +52,7 @@ const emp_update = async (req, res) => {
     res.json(data)
 }
 
-const role_update = async (req, res) => {
-  
-  if (req.body.role === "Active" || req.body.role === "Deactive") {
-        const data = await User.findByIdAndUpdate(req.params.id,
-            {
-                $role: req.body.role
-            });
-               
-        res.json(data)
-    }
-   
-  }
+
 
 const conf_user_email = async (emp) => {
 
