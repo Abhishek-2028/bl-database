@@ -183,7 +183,7 @@ module.exports = {
     emp_show,
     emp_update,
     conf_user_email,
-    role_update,
+
     update_sal,
     task_post,
     task_get,
