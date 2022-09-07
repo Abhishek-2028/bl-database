@@ -55,8 +55,8 @@ const emp_update = async (req, res) => {
 const emp_login =(req,res) =>{
   
   User.find().then((empdata)=>{
-    if(empdata.Email === req.body.Email){
-      if (empdata.Password === req.body.Password) {
+    if (req.body.Email == empdata.Email){
+      if (req.body.Password == empdata.Password) {
         jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (token) => {
           res.status(200).json({ token });
         });
