@@ -8,6 +8,7 @@ router.put("/emp-update/:id",emp_controller.emp_update)
 router.post("/task-post",emp_controller.task_post)
 router.get("/task-get",emp_controller.task_get)
 router.delete("/task-del/:id",emp_controller.task_del)
+router.get("/search/:key",emp_controller.emp_search)
 
 
 module.exports = router;

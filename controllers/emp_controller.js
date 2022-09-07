@@ -52,6 +52,17 @@ const emp_update = async (req, res) => {
     res.json(data)
 }
 
+const emp_search = async(req,res)=>{
+  const data = await User.find(
+    {
+      '$or': [
+        { Email: { $regex: req.params.key } }
+      ]
+    }
+  )
+  res.json(data)
+}
+
 
 
 const conf_user_email = async (emp) => {
@@ -122,9 +133,7 @@ const conf_user_email = async (emp) => {
           padding:5px;
         ">
       <h1 style=" font-size:16px">Your Employee Login Credential</h1>
-      <br>
       <h4 style="  color: red;
-                   margin:-40px;
                    text-align:left;
                    margin-left:8%;
                    border: 1px solid black;
@@ -144,6 +153,8 @@ const conf_user_email = async (emp) => {
       
     }).then(() => { console.log('mail send') })
 }
+
+
 
 
 
@@ -171,5 +182,6 @@ module.exports = {
     conf_user_email,
     task_post,
     task_get,
-    task_del
+    task_del,
+    emp_search
 }
