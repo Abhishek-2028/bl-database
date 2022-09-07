@@ -57,12 +57,22 @@ const emp_login =async(req,res) =>{
   await User.findOne({Email:req.body.Email}).then((empdata)=>{
       if (empdata.Password === req.body.Password) {
         jwt.sign({ empdata }, jwtkey,{ expiresIn: "300s"},(err,token) => {
-          res.status(200).json(empdata);
-          localStorage.setItem("login_token",token)
+          res.status(200).cookie("login_token", token).json({success:true,empdata,token});
+          
         });
-        
       }
+      else(
+        res.status(500).json({
+          success:false,
+          message:"data not found"
+      })
+      )
      
+    }).catch(()=>{
+      res.status(500).json({
+        success: false,
+        message: "data not found"
+      })
     })
 }
 
