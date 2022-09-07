@@ -62,14 +62,14 @@ const emp_login =async(req,res) =>{
         });
       }
       else(
-        res.status(500).json({
+        res.status(404).json({
           success:false,
           message:"data not found"
       })
       )
      
     }).catch(()=>{
-      res.status(500).json({
+      res.status(404).json({
         success: false,
         message: "data not found"
       })
