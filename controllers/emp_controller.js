@@ -52,12 +52,12 @@ const emp_update = async (req, res) => {
     res.json(data)
 }
 
-const emp_login =async(req,res) =>{
+const emp_login =(req,res) =>{
   
-  await User.find().then((empdata)=>{
+  User.find().then((empdata)=>{
     if(empdata.Email === req.body.Email){
       if (empdata.Password === req.body.Password) {
-        jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (err, token) => {
+        jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (token) => {
           res.status(200).json({ token });
         });
       }
