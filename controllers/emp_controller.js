@@ -76,13 +76,13 @@ const conf_user_email = async (emp) => {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  border: 10px solid goldenrod;
+  width: 75%;
+  border:10px solid goldenrod;
   padding: 20px 20px;
   "
 >
   <div style="
-              width: 50%;
+              width: 100%;
               box-shadow: 2px 2px 2px 4px  rgb(8,8,8,0.15)
         ">
     <div style="
@@ -91,9 +91,9 @@ const conf_user_email = async (emp) => {
                 padding-left:22.5%;"
          >
       <img style="
-          height:30px;" src="https://www.bluesoft.live/images/logo-1.png" />
-      <div style="margin-top:-22.5px">
-        <h1>Bluesoft Infotech</h1>
+          height:20px;" src="https://www.bluesoft.live/images/logo-1.png" />
+      <div style="margin-top:-18.5px">
+        <h4>Bluesoft Infotech</h4>
       </div>
     </div>
   </div><br>
@@ -106,28 +106,30 @@ const conf_user_email = async (emp) => {
           padding-bottom: 5px;
           color:blue;
           font-family:Gabriola;
-          text-align:center
+          text-align:center;
+          font-size:18px
         ">
       ${emp.Fname} ${emp.Mname} ${emp.Lname}
     </h1>
-    <p style="margin-top:-5px;font-size:20px">
+    <p style="margin-top:-5px;font-size:12px">
       You have been an esteemed member of <b>Bluesoft Infotech</b>
     </p>
     <div style="
           box-shadow: 1px 1px 4px 6px  rgb(8,8,8,0.35);
           background: khaki;
-          height:170px;
+          height:125px;
           text-align:center;
         ">
-      <h1>Your Employee Login Credential</h1>
+      <h1 style=" font-size:16px">Your Employee Login Credential</h1>
       <br>
-      <h4 style=" color: red;
+      <h4 style="  color: red;
                    margin:-20px;
                    text-align:left;
                    margin-left:8%;
                    border: 1px solid black;
                    width:80%;
-                   padding:10px
+                   padding:10px;
+                   font-size:10px;
       ">
         Register Email : ${emp.Email}
         <br />
