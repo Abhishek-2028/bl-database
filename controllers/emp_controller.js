@@ -56,7 +56,7 @@ const emp_login =async(req,res) =>{
   
   await User.findOne({Email:req.body.Email}).then((empdata)=>{
       if (empdata.Password === req.body.Password) {
-        jwt.sign({ empdata }, jwtkey, { expiresIn: "1000s" }, ( token) => {
+        jwt.sign({ empdata }, jwtkey, ( token) => {
           res.status(200).json({ token });
         });
         
