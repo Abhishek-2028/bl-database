@@ -6,6 +6,10 @@ var tasks = new mongoose.Schema({
       task:{
         type: String,
         required: true
+      },
+      emp_id:{
+        type:String,
+        required: true,
       }
 })
 
