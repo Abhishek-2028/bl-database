@@ -9,7 +9,7 @@ var tasks = new mongoose.Schema({
       },
       emp_id:{
         type:String,
-        required: true,
+        required: true
       }
 })
 

@@ -176,8 +176,6 @@ module.exports = {
     emp_show,
     emp_update,
     conf_user_email,
-
-  
     task_post,
     task_get,
     task_del
