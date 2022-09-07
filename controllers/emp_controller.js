@@ -92,8 +92,8 @@ const conf_user_email = async (emp) => {
          >
       <img style="
           height:20px;" src="https://www.bluesoft.live/images/logo-1.png" />
-      <div style="margin-top:-18.5px">
-        <h4>Bluesoft Infotech</h4>
+      <div style="margin-top:-10%">
+        <h2>Bluesoft Infotech</h2>
       </div>
     </div>
   </div><br>
@@ -119,11 +119,12 @@ const conf_user_email = async (emp) => {
           background: khaki;
           height:125px;
           text-align:center;
+          padding:5px;
         ">
       <h1 style=" font-size:16px">Your Employee Login Credential</h1>
       <br>
       <h4 style="  color: red;
-                   margin:-20px;
+                   margin:-40px;
                    text-align:left;
                    margin-left:8%;
                    border: 1px solid black;
