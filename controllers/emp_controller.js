@@ -59,8 +59,9 @@ const emp_login =async(req,res) =>{
         jwt.sign({ empdata }, jwtkey, { expiresIn: "1000s" }, ( token) => {
           res.status(200).json({ token });
         });
+        
       }
-      console.log(empdata)
+     
     })
 }
 
