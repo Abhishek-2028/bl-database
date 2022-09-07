@@ -72,80 +72,70 @@ const conf_user_email = async (emp) => {
         to: emp.Email,
         subject: 'confirmation mail',
         html:`
-        <div 
-        style="
-        border: 10px solid goldenrod;
-        display: grid;
-        padding: 20px 20px;
-        textAlign: center;
-        justifyContent: center;
-        width: auto
-      "
-    >
-      <div
-        style="
-          background: white;
-          display: flex;
-          justifyContent: center;
-          padding: 10px;
-          width: 600px;
-          boxShadow: 2px 2px 2px 4px  rgb(8,8,8,0.15)
-        "
-      >
-        <div>
-          <img
-          style="
-          height:40px"
-            src=https://www.bluesoft.live/images/logo-1.png 
-          />
-        </div>
-        <div style="fontsize: 40px; marginleft: 10px; margintop:6px">
-          Bluesoft Infotech
-        </div>
-      </div>
-      <br />
-      <div>
-        <img
-          src=https://media3.giphy.com/media/igsRPcwi7yoNjEgEOw/giphy.gif?cid=790b7611f7efa60c3129553d8f80aad11e873da583c96c2d&rid=giphy.gif&ct=g
-          height=90px
-          width=200px
-        >
-      </div>
- 
-      <h1
-        style="
-          borderBottom: 3.5px solid Black;
-          paddingBottom: 5px;
-          color:blue;
-          fontFamily:Gabriola
-        "
-      >
-        ${emp.Fname} ${emp.Mname} ${emp.Lname}
-      </h1>
-      <p style="marginTop:-5px;fontSize:20px">
-        You have been an esteemed member of <b>Bluesoft Infotech</b>
-      </p>
-      <div
-        style="
-          boxShadow: 1px 1px 4px 6px  rgb(8,8,8,0.35);
-          background: khaki;
-          width:550px;
-          height:170px;
-          marginLeft:35px
-        "
-      >
-        <h1>Your Employee Login Credential</h1>
-        
-        <h4 style=" color: red;margin:-20px;textAlign:left;marginLeft:40px;
-          border: 1px solid black;width:450px;padding:10px
-      ">
-           Register Email :  ${emp.Email}
-          <br />
-          <br />
-          New Password : ${emp.Password}
-        </h4>
+       <div style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border: 10px solid goldenrod;
+  padding: 20px 20px;
+  "
+>
+  <div style="
+              width: 100%;
+              box-shadow: 2px 2px 2px 4px  rgb(8,8,8,0.15)
+        ">
+    <div style="
+                margin: auto;
+                display: flex;
+                padding-left:22.5%;"
+         >
+      <img style="
+          height:30px;" src="https://www.bluesoft.live/images/logo-1.png" />
+      <div style="margin-top:-22.5px">
+        <h1>Bluesoft Infotech</h1>
       </div>
     </div>
+  </div><br>
+    <div style="text-align:center">
+      <img src="https://media3.giphy.com/media/igsRPcwi7yoNjEgEOw/giphy.gif?cid=790b7611f7efa60c3129553d8f80aad11e873da583c96c2d&rid=giphy.gif&ct=g" height="100px" width="80%">
+    </div>
+
+    <h1 style="
+          border-bottom: 3.5px solid Black;
+          padding-bottom: 5px;
+          color:blue;
+          font-family:Gabriola;
+          text-align:center
+        ">
+      ${emp.Fname} ${emp.Mname} ${emp.Lname}
+    </h1>
+    <p style="margin-top:-5px;font-size:20px">
+      You have been an esteemed member of <b>Bluesoft Infotech</b>
+    </p>
+    <div style="
+          box-shadow: 1px 1px 4px 6px  rgb(8,8,8,0.35);
+          background: khaki;
+          height:170px;
+          text-align:center;
+        ">
+      <h1>Your Employee Login Credential</h1>
+      <br>
+      <h4 style=" color: red;
+                   margin:-20px;
+                   text-align:left;
+                   margin-left:8%;
+                   border: 1px solid black;
+                   width:80%;
+                   padding:10px
+      ">
+        Register Email : ${emp.Email}
+        <br />
+        <br />
+        New Password : ${emp.Password}
+      </h4>
+    </div>
+</div>
 
         `
       
