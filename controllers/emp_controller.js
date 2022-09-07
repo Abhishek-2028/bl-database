@@ -16,7 +16,7 @@ const emp_add = async (req, res) => {
     let data = new User({
         Fname: req.body.Fname,
         Mname: req.body.Mname,
-        Lname: req.body.Mname,
+        Lname: req.body.Lname,
         Gender: req.body.Gender,
         Email: req.body.Email,
         Password: req.body.Password,
