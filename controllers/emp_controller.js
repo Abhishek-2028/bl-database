@@ -9,7 +9,7 @@ dotenv.config({ path: './.env' })
 
 const ADMIN_email = process.env.ADMIN_Email
 const ADMIN_Pass = process.env.ADMIN_Pass
-
+const jwtkey = "Bluesoft.infotech@live"
 
 
 const emp_add = async (req, res) => {
@@ -52,17 +52,19 @@ const emp_update = async (req, res) => {
     res.json(data)
 }
 
-const emp_login =(req,res) =>{
+const emp_login =async(req,res) =>{
   
-  User.find().then((empdata)=>{
-    if (req.body.Email == empdata.Email){
-      if (req.body.Password == empdata.Password) {
-        jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (token) => {
+  await User.findOne({Email:req.body.Email}).then((empdata)=>{
+      if (empdata.Password === req.body.Password) {
+        jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (err, token) => {
           res.status(200).json({ token });
         });
       }
-}})
+      console.log(empdata)
+    })
 }
+
+
 
 const conf_user_email = async (emp) => {
 
