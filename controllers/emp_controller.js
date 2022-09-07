@@ -1,6 +1,6 @@
 const User = require("../model/emp_schema")
 const Task =require("../model/Daily_update")
-
+const jwt= require("jsonwebtoken")
 
 const nodemailer = require("nodemailer")
 const dotenv = require("dotenv")
@@ -52,18 +52,17 @@ const emp_update = async (req, res) => {
     res.json(data)
 }
 
-const emp_search = async(req,res)=>{
-  const data = await User.find(
-    {
-      '$or': [
-        { Email: { $regex: req.params.key } }
-      ]
-    }
-  )
-  res.json(data)
+const emp_login =async(req,res) =>{
+  
+  await User.find().then((empdata)=>{
+    if(empdata.Email === req.body.Email){
+      if (empdata.Password === req.body.Password) {
+        jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (err, token) => {
+          res.status(200).json({ token });
+        });
+      }
+}})
 }
-
-
 
 const conf_user_email = async (emp) => {
 
@@ -183,5 +182,5 @@ module.exports = {
     task_post,
     task_get,
     task_del,
-    emp_search
+    emp_login
 }
