@@ -82,7 +82,7 @@ const conf_user_email = async (emp) => {
   "
 >
   <div style="
-              width: 100%;
+              width: 50%;
               box-shadow: 2px 2px 2px 4px  rgb(8,8,8,0.15)
         ">
     <div style="
