@@ -52,10 +52,8 @@ var empSchema = new mongoose.Schema({
         required: true
     },
     Salary: {
-        
         type: Number,
         required: true
-       
     },
     role: {
         type: String,
