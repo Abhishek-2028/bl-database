@@ -55,6 +55,11 @@ app.post("/doc_upload", upload.single('user_docs'), (req, res) => {
         Doc_name: req.body.Doc_name,
         
         Doc_img: `http://localhost:5555/user_file/${req.file.originalname}`,
+
+        emp_doc_id: {
+            type:String,
+            required:true
+        }
    
     });
     final_img
