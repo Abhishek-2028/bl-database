@@ -54,11 +54,9 @@ var empSchema = new mongoose.Schema({
     Salary: {
             type: Number,
             required: true,
-        date:{
-           type:Date,
            default: Date.now()
         }
-    }
+    
        ,
     role: {
         type: String,
