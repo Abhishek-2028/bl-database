@@ -52,10 +52,8 @@ var empSchema = new mongoose.Schema({
         required: true
     },
     Salary: {
-        salary:{
             type: Number,
-            required: true
-        },
+            required: true,
         date:{
            type:Date,
            default: Date.now()
