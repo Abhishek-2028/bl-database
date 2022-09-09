@@ -1,6 +1,6 @@
 const User = require("../model/emp_schema")
-const Task =require("../model/Daily_update")
-const jwt= require("jsonwebtoken")
+const Task = require("../model/Daily_update")
+const jwt = require("jsonwebtoken")
 
 const nodemailer = require("nodemailer")
 const dotenv = require("dotenv")
@@ -13,89 +13,90 @@ const jwtkey = "Bluesoft.infotech@live"
 
 
 const emp_add = async (req, res) => {
-    let data = new User({
-        Fname: req.body.Fname,
-        Mname: req.body.Mname,
-        Lname: req.body.Lname,
-        Gender: req.body.Gender,
-        Email: req.body.Email,
-        Password: req.body.Password,
-        Phone: req.body.Phone,
-        DOB: req.body.DOB,
-        Designation: req.body.Designation,
-        Address: req.body.Address,
-        Salary: req.body.Salary
-    });
-    console.log(req.body)
-    let demo1 = await data.save();
-    res.send(demo1)
-    conf_user_email(req.body)
+  let data = new User({
+    Fname: req.body.Fname,
+    Mname: req.body.Mname,
+    Lname: req.body.Lname,
+    Gender: req.body.Gender,
+    Email: req.body.Email,
+    Password: req.body.Password,
+    Phone: req.body.Phone,
+    Phone2: req.body.Phone2,
+    DOB: req.body.DOB,
+    Designation: req.body.Designation,
+    Address: req.body.Address,
+    Salary: req.body.Salary
+  });
+  console.log(req.body)
+  let demo1 = await data.save();
+  res.send(demo1)
+  conf_user_email(req.body)
 
 }
 
 const emp_show = async (req, res) => {
-    let userData = await User.find();
-    res.send(userData);
+  let userData = await User.find();
+  res.send(userData);
 }
 
 const emp_del = async (req, res) => {
-    const data = await User.findByIdAndDelete(req.params.id);
-    res.json(data)
+  const data = await User.findByIdAndDelete(req.params.id);
+  res.json(data)
 }
 
 const emp_update = async (req, res) => {
-    const data = await User.findByIdAndUpdate(req.params.id,
-        {
-            $set: req.body
-        });
+  const data = await User.findByIdAndUpdate(req.params.id,
+    {
+      $set: req.body
+    });
 
-    res.json(data)
+  res.json(data)
 }
 
-const emp_login =async(req,res) =>{
-  
-  await User.findOne({Email:req.body.Email}).then((empdata)=>{
-      if (empdata.Password === req.body.Password) {
-        jwt.sign({ empdata }, jwtkey,{ expiresIn: "300s"},(err,token) => {
-          res.status(200).cookie("login_token", token).json({success:true,empdata,token});
-          
-        });
-      }
-      else(
-        res.status(404).json({
-          success:false,
-          message:"data not found"
-      })
-      )
-     
-    }).catch(()=>{
+const emp_login = async (req, res) => {
+
+  await User.findOne({ Email: req.body.Email }).then((empdata) => {
+    if (empdata.Password === req.body.Password) {
+      jwt.sign({ empdata }, jwtkey, { expiresIn: "300s" }, (err, token) => {
+        res.status(200).cookie("login_token", token).json({ success: true, empdata, token });
+
+      });
+    }
+    else (
       res.status(404).json({
         success: false,
         message: "data not found"
       })
+    )
+
+  }).catch(() => {
+    res.status(404).json({
+      success: false,
+      message: "data not found"
     })
+  })
 }
 
 
 
 const conf_user_email = async (emp) => {
 
-    let transpoter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        secure: false,
-        port: 587,
-        requireTLS: 'true',
-        auth: {
-            user: ADMIN_email,
-            pass: ADMIN_Pass
-        }
-    })
+  let transpoter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    secure: false,
+    port: 587,
+    requireTLS: 'true',
+    auth: {
+      user: ADMIN_email,
+      pass: ADMIN_Pass
+    }
+  })
 
-    transpoter.sendMail({
-        from: ADMIN_email,
-        to: emp.Email,
-        subject: 'confirmation mail',
-        html:`
+  transpoter.sendMail({
+    from: ADMIN_email,
+    to: emp.Email,
+    subject: 'confirmation mail',
+    html: `
        <div style="
   display: block;
   margin-left: auto;
@@ -163,38 +164,38 @@ const conf_user_email = async (emp) => {
 </div>
 
         `
-      
-    }).then(() => { console.log('mail send') })
+
+  }).then(() => { console.log('mail send') })
 }
 
 
 
 
 
-const task_post = async(req,res)=>{
-    let task=new Task(req.body)
-    let tasks_added= await task.save();
-    res.send(tasks_added)
+const task_post = async (req, res) => {
+  let task = new Task(req.body)
+  let tasks_added = await task.save();
+  res.send(tasks_added)
 }
 
-const task_get =async(req,res)=>{
-    let showtask= await Task.find();
-    res.send(showtask)
+const task_get = async (req, res) => {
+  let showtask = await Task.find();
+  res.send(showtask)
 }
 
-const task_del =async(req,res)=>{
-    const taskdel=await Task.findByIdAndDelete(req.params.id);
-    res.json(taskdel)
+const task_del = async (req, res) => {
+  const taskdel = await Task.findByIdAndDelete(req.params.id);
+  res.json(taskdel)
 }
 
 module.exports = {
-    emp_add,
-    emp_del,
-    emp_show,
-    emp_update,
-    conf_user_email,
-    task_post,
-    task_get,
-    task_del,
-    emp_login
+  emp_add,
+  emp_del,
+  emp_show,
+  emp_update,
+  conf_user_email,
+  task_post,
+  task_get,
+  task_del,
+  emp_login
 }
