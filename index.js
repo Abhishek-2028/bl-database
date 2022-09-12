@@ -11,13 +11,16 @@ dotenv.config({ path : './.env'})
 const DB=process.env.DTB;
 
 mongoose.connect(DB)
-   
-    .then((data) => console.log(`mongodb connected with server: ${data.connection.host}`))
-    .catch(err => console.log(err));
+
+.then((data) => console.log(`mongodb connected with server: ${data.connection.host}`))
+.catch(err => console.log(err));
 
 app.use(express.json());
 app.use(cors());
 
+const routes = require("./routes/routes");
+
+app.use("/emp",routes);
 // var DocSchema = new mongoose.Schema({
 //     Doc_name: {
 //         type: String,
@@ -41,7 +44,7 @@ app.use(cors());
 
 
 
-// app.use('/user_docs', express.static('uploads'));
+app.use('/user_docs', express.static('uploads'));
 // app.post("/doc_upload/:id", upload.single('user_docs'), (req, res) => {
 
 //     var final_img = new document({
@@ -74,10 +77,7 @@ app.use(cors());
 // });
 
 
-// app.use('/user_file', express.static('uploads'));
+app.use('/user_file', express.static('uploads'));
 
-const routes = require("./routes/routes");
-
-app.use("/emp",routes);
 
 app.listen(port,()=>console.log(`server is running on port ${port}`))   
