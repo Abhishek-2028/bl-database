@@ -1,6 +1,8 @@
 const User = require("../model/emp_schema")
 const Task = require("../model/Daily_update")
 const jwt = require("jsonwebtoken")
+const document = require("../model/docs_schema")
+
 
 const nodemailer = require("nodemailer")
 const dotenv = require("dotenv")
@@ -194,6 +196,37 @@ const task_del = async (req, res) => {
   res.json(taskdel)
 }
 
+const docs_post = async(req,res) =>{
+   var final_img = new document({
+      
+        Doc_name: req.body.Doc_name,
+        
+        Doc_img: `http://localhost:5555/user_file/${req.file.originalname}`,
+
+        emp_doc_id: req.params.id
+   
+    });
+    final_img
+        .save()
+        .then((data) => res.json(data))
+        .catch((err) => res.status(400).json(`Error: ${err}`))
+   
+    console.log(req.file);
+}
+
+const docs_get = async(req,res)=>{
+    document.find({}, function (err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(result);
+        }
+    });
+}
+
+
+
+
 module.exports = {
   emp_add,
   emp_del,
@@ -203,5 +236,7 @@ module.exports = {
   task_post,
   task_get,
   task_del,
-  emp_login
+  emp_login,
+  docs_post,
+  docs_get
 }
