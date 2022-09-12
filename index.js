@@ -41,7 +41,7 @@ app.use(cors());
 
 
 
-app.use('/user_docs', express.static('uploads'));
+// app.use('/user_docs', express.static('uploads'));
 // app.post("/doc_upload/:id", upload.single('user_docs'), (req, res) => {
 
 //     var final_img = new document({
@@ -74,7 +74,7 @@ app.use('/user_docs', express.static('uploads'));
 // });
 
 
-app.use('/user_file', express.static('uploads'));
+// app.use('/user_file', express.static('uploads'));
 
 const routes = require("./routes/routes");
 
