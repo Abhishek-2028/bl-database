@@ -32,7 +32,7 @@ router.get("/task-get",emp_controller.task_get)
 router.delete("/task-del/:id",emp_controller.task_del)
 router.post("/emp-login",jsonParser,emp_controller.emp_login)
 app.use('/user_docs', express.static('uploads')); 
-router.post("user_docs/doc_upload/:id", upload.single('user_docs'), emp_controller.docs_post)
+router.post("doc_upload/:id", upload.single('user_docs'), emp_controller.docs_post)
 router.get("/getdocs",emp_controller.docs_get)
 app.use('/user_file', express.static('uploads'));
 
