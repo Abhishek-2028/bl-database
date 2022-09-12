@@ -13,6 +13,7 @@ const jwtkey = "Bluesoft.infotech@live"
 
 
 const emp_add = async (req, res) => {
+  
   let data = new User({
     Fname: req.body.Fname,
     Mname: req.body.Mname,
@@ -49,6 +50,7 @@ const emp_update = async (req, res) => {
     {
       $set: req.body
     });
+    console.log(data,"REQ##############################################################################");
 
   res.json(data)
 }
@@ -76,6 +78,7 @@ const emp_login = async (req, res) => {
     })
   })
 }
+
 
 
 
@@ -172,8 +175,11 @@ const conf_user_email = async (emp) => {
 
 
 
-const task_post = async (req, res) => {
-  let task = new Task(req.body)
+const task_post = async (req, res ) => {
+  let task = new Task({
+    task:req.body.task,
+    emp_sr: req.params.id
+  })
   let tasks_added = await task.save();
   res.send(tasks_added)
 }

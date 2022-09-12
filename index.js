@@ -12,6 +12,7 @@ dotenv.config({ path : './.env'})
 const DB=process.env.DTB;
 
 mongoose.connect(DB)
+   
     .then((data) => console.log(`mongodb connected with server: ${data.connection.host}`))
     .catch(err => console.log(err));
 
@@ -21,12 +22,19 @@ app.use(cors());
 var DocSchema = new mongoose.Schema({
     Doc_name: {
         type: String,
+        required: true
      
     },
     Doc_img: {
         type: String,
+        required: true
         
+    },
+    emp_doc_id:{
+        type: String,
+        required: true
     }
+
 });
 
 var document = mongoose.model("document", DocSchema);
@@ -48,7 +56,7 @@ var upload = multer({
 
 
 app.use('/user_docs', express.static('uploads'));
-app.post("/doc_upload", upload.single('user_docs'), (req, res) => {
+app.post("/doc_upload/:id", upload.single('user_docs'), (req, res) => {
 
     var final_img = new document({
       
@@ -56,10 +64,7 @@ app.post("/doc_upload", upload.single('user_docs'), (req, res) => {
         
         Doc_img: `http://localhost:5555/user_file/${req.file.originalname}`,
 
-        emp_doc_id: {
-            type:String,
-            required:true
-        }
+        emp_doc_id: req.params.id
    
     });
     final_img
