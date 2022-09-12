@@ -201,7 +201,7 @@ const docs_post = async(req,res) =>{
       
         Doc_name: req.body.Doc_name,
         
-        Doc_img: `http://bluesoft-admin-api.herokuapp.com/user_file/${req.file.originalname}`,
+        Doc_img: `/user_file/${req.file.originalname}`,
 
         emp_doc_id: req.params.id
    
