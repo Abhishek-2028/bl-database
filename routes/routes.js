@@ -3,12 +3,17 @@ const emp_controller= require("../controllers/emp_controller")
 var bodyParser = require("body-parser");
 var jsonParser = bodyParser.json();
 const multer = require("multer")
+const dotenv = require("dotenv")
 
+
+dotenv.config({ path: './.env' })
+
+const DB = process.env.DTB
 
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/')
+        cb(null, `${DB}/uploads/`)
     },
     filename: function (req, file, cb) {
 
