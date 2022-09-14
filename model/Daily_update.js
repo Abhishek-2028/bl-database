@@ -13,6 +13,10 @@ var tasks = new mongoose.Schema({
       emp_sr:{
         type: String,
         required: true
+      },
+      Date:{
+        type: Date,
+        required :true
       }
 
     

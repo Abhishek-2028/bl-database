@@ -180,7 +180,8 @@ const conf_user_email = async (emp) => {
 const task_post = async (req, res ) => {
   let task = new Task({
     task:req.body.task,
-    emp_sr: req.params.id
+    emp_sr: req.params.id,
+    Date:req.body.Date
   })
   let tasks_added = await task.save();
   res.send(tasks_added)
