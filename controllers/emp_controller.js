@@ -197,6 +197,15 @@ const task_del = async (req, res) => {
   res.json(taskdel)
 }
 
+const task_update = async (req, res) => {
+  const data = await Task.findByIdAndUpdate(req.params.id,
+    {
+      $set: req.body
+    });
+
+  res.json(data)
+}
+
 const docs_post = async(req,res) =>{
    var final_img = new document({
       
@@ -239,5 +248,6 @@ module.exports = {
   task_del,
   emp_login,
   docs_post,
-  docs_get
+  docs_get,
+  task_update
 }
