@@ -19,8 +19,13 @@ var tasks = new mongoose.Schema({
         required :true,
         default: Date.now()
       }
+      
+
 
     
+},
+{
+  timestamps: true
 })
 
 module.exports = mongoose.model("Daily_update",tasks);
