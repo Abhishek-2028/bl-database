@@ -16,7 +16,8 @@ var tasks = new mongoose.Schema({
       },
       Date:{
         type: Date,
-        required :true
+        required :true,
+        default: Date.now()
       }
 
     
