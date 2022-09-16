@@ -59,6 +59,9 @@ var empSchema = new mongoose.Schema({
         type: String,
         default: "Active"
     }
+},
+{
+        timestamps: true
 });
 
 
