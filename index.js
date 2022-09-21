@@ -6,6 +6,7 @@ const port=process.env.PORT || 5555;
 const dotenv=require("dotenv")
 
 
+app.use(cors());
 dotenv.config({ path : './.env'})
 
 const DB=process.env.DTB;
@@ -16,7 +17,6 @@ mongoose.connect(DB)
 .catch(err => console.log(err));
 
 app.use(express.json());
-app.use(cors());
 
 const routes = require("./routes/routes");
 
